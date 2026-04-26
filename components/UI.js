@@ -15,21 +15,21 @@ export function Btn({ children, onClick, variant = 'primary', size = 'md', style
   }
   const variants = {
     primary: {
-      background: 'linear-gradient(135deg, #4f46e5, #7c3aed)',
+      background: 'var(--accent)',
       color: '#ffffff',
-      boxShadow: '0 2px 8px rgba(79,70,229,0.25)',
+      boxShadow: 'var(--shadow)',
     },
     ghost: {
-      background: '#f8f9fc', color: '#374151',
-      border: '1.5px solid #e2e6ef',
+      background: 'var(--bg)', color: 'var(--text)',
+      border: '1.5px solid var(--border)',
     },
     danger: {
-      background: '#fff5f5', color: '#dc2626',
-      border: '1.5px solid #fecaca',
+      background: 'var(--danger-bg)', color: 'var(--danger)',
+      border: '1.5px solid var(--danger-bg)',
     },
     success: {
-      background: '#f0fdf4', color: '#059669',
-      border: '1.5px solid #a7f3d0',
+      background: 'var(--success-bg)', color: 'var(--success)',
+      border: '1.5px solid var(--success-bg)',
     },
   }
   return (
@@ -79,11 +79,11 @@ export function ActivityBadge({ type }) {
 export function Card({ children, style: s }) {
   return (
     <div style={{
-      background: '#ffffff',
-      border: '1px solid #e2e6ef',
+      background: 'var(--surface)',
+      border: '1px solid var(--border)',
       borderRadius: 12,
       padding: 20,
-      boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+      boxShadow: 'var(--shadow)',
       ...s
     }}>
       {children}
@@ -96,7 +96,7 @@ export function CardTitle({ children, action }) {
   return (
     <div style={{
       fontFamily: 'Inter', fontSize: 14, fontWeight: 700,
-      marginBottom: 16, color: '#111827',
+      marginBottom: 16, color: 'var(--text)',
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
       letterSpacing: '-0.2px',
     }}>
@@ -107,31 +107,31 @@ export function CardTitle({ children, action }) {
 }
 
 // ── StatCard ─────────────────────────────────────────────────────────
-export function StatCard({ label, value, sub, accentColor = '#4f46e5', icon }) {
+export function StatCard({ label, value, sub, accentColor = 'var(--accent)', icon }) {
   return (
     <div style={{
-      background: '#ffffff',
-      border: '1px solid #e2e6ef',
+      background: 'var(--surface)',
+      border: '1px solid var(--border)',
       borderRadius: 12,
       padding: '18px 20px',
       position: 'relative', overflow: 'hidden',
-      boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+      boxShadow: 'var(--shadow)',
       transition: 'box-shadow 0.2s, transform 0.2s',
     }}
-      onMouseEnter={e => { e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.10)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-      onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.06)'; e.currentTarget.style.transform = 'translateY(0)' }}
+      onMouseEnter={e => { e.currentTarget.style.boxShadow = 'var(--shadow-md)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+      onMouseLeave={e => { e.currentTarget.style.boxShadow = 'var(--shadow)'; e.currentTarget.style.transform = 'translateY(0)' }}
     >
       <div style={{
         position: 'absolute', top: 0, left: 0, right: 0, height: 3,
         background: accentColor, borderRadius: '12px 12px 0 0',
       }} />
-      <div style={{ fontSize: 11, letterSpacing: '0.05em', textTransform: 'uppercase', color: '#9ca3af', marginBottom: 8, fontWeight: 600 }}>
+      <div style={{ fontSize: 11, letterSpacing: '0.05em', textTransform: 'uppercase', color: 'var(--text-3)', marginBottom: 8, fontWeight: 600 }}>
         {label}
       </div>
-      <div style={{ fontFamily: 'Inter', fontSize: 28, fontWeight: 800, color: '#111827', letterSpacing: '-1px' }}>
+      <div style={{ fontFamily: 'Inter', fontSize: 28, fontWeight: 800, color: 'var(--text)', letterSpacing: '-1px' }}>
         {value}
       </div>
-      {sub && <div style={{ fontSize: 11, color: '#9ca3af', marginTop: 4, fontWeight: 500 }}>{sub}</div>}
+      {sub && <div style={{ fontSize: 11, color: 'var(--text-3)', marginTop: 4, fontWeight: 500 }}>{sub}</div>}
     </div>
   )
 }
@@ -139,10 +139,10 @@ export function StatCard({ label, value, sub, accentColor = '#4f46e5', icon }) {
 // ── Spinner ──────────────────────────────────────────────────────────
 export function Spinner() {
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 60, color: '#9ca3af', gap: 14 }}>
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: 60, color: 'var(--text-3)', gap: 14 }}>
       <div style={{
-        width: 32, height: 32, border: '3px solid #e2e6ef',
-        borderTopColor: '#4f46e5', borderRadius: '50%',
+        width: 32, height: 32, border: '3px solid var(--border)',
+        borderTopColor: 'var(--accent)', borderRadius: '50%',
         animation: 'spin 0.7s linear infinite',
       }} />
       <span style={{ fontSize: 13, fontWeight: 500 }}>Loading...</span>
@@ -153,10 +153,10 @@ export function Spinner() {
 // ── EmptyState ────────────────────────────────────────────────────────
 export function EmptyState({ icon = '◈', message = 'No data found' }) {
   return (
-    <div style={{ textAlign: 'center', padding: '60px 20px', color: '#9ca3af' }}>
+    <div style={{ textAlign: 'center', padding: '60px 20px', color: 'var(--text-3)' }}>
       <div style={{ fontSize: 40, marginBottom: 12, opacity: 0.5 }}>{icon}</div>
-      <div style={{ fontSize: 14, fontWeight: 500, color: '#6b7280' }}>{message}</div>
-      <div style={{ fontSize: 12, marginTop: 4, color: '#9ca3af' }}>Nothing here yet</div>
+      <div style={{ fontSize: 14, fontWeight: 500, color: 'var(--text-2)' }}>{message}</div>
+      <div style={{ fontSize: 12, marginTop: 4, color: 'var(--text-3)' }}>Nothing here yet</div>
     </div>
   )
 }
@@ -167,13 +167,13 @@ export function Table({ headers, children }) {
     <div style={{ overflowX: 'auto' }}>
       <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: 13 }}>
         <thead>
-          <tr style={{ background: '#f8f9fc' }}>
+          <tr style={{ background: 'var(--bg)' }}>
             {headers.map((h, i) => (
               <th key={i} style={{
                 textAlign: 'left', padding: '11px 14px',
                 fontSize: 11, letterSpacing: '0.05em',
-                textTransform: 'uppercase', color: '#6b7280',
-                borderBottom: '1px solid #e2e6ef',
+                textTransform: 'uppercase', color: 'var(--text-2)',
+                borderBottom: '1px solid var(--border)',
                 whiteSpace: 'nowrap', fontWeight: 600,
               }}>{h}</th>
             ))}
@@ -189,8 +189,8 @@ export function Table({ headers, children }) {
 export function Td({ children, style: s }) {
   return (
     <td style={{
-      padding: '11px 14px', borderBottom: '1px solid #f1f3f8',
-      verticalAlign: 'middle', color: '#374151', ...s,
+      padding: '11px 14px', borderBottom: '1px solid var(--border)',
+      verticalAlign: 'middle', color: 'var(--text)', ...s,
     }}>
       {children}
     </td>
@@ -199,12 +199,12 @@ export function Td({ children, style: s }) {
 
 // ── RoleBadge ─────────────────────────────────────────────────────────
 const ROLE_STYLES = {
-  admin:    { bg: '#f5f3ff', color: '#6d28d9', border: '#ddd6fe', label: '⚡ Admin' },
-  manager:  { bg: '#eff6ff', color: '#1d4ed8', border: '#bfdbfe', label: '◈ Manager' },
-  employee: { bg: '#f0fdf4', color: '#059669', border: '#a7f3d0', label: '◑ Employee' },
+  admin:    { bg: 'var(--accent-light)', color: 'var(--accent)', border: 'var(--border)', label: '⚡ Admin' },
+  manager:  { bg: 'var(--info-bg)', color: 'var(--info)', border: 'var(--border)', label: '◈ Manager' },
+  employee: { bg: 'var(--success-bg)', color: 'var(--success)', border: 'var(--border)', label: '◑ Employee' },
 }
 export function RoleBadge({ role }) {
-  const s = ROLE_STYLES[role] || { bg: '#f3f4f6', color: '#6b7280', border: '#e5e7eb', label: role || 'Unknown' }
+  const s = ROLE_STYLES[role] || { bg: 'var(--bg)', color: 'var(--text-2)', border: 'var(--border)', label: role || 'Unknown' }
   return (
     <span style={{
       background: s.bg, color: s.color,
@@ -225,10 +225,10 @@ export function PipelineBar({ label, count, total, color }) {
   return (
     <div style={{ marginBottom: 14 }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 6, fontSize: 12 }}>
-        <span style={{ color: '#6b7280', fontWeight: 500 }}>{label}</span>
-        <span style={{ color, fontWeight: 700 }}>{count}/{total} <span style={{ color: '#9ca3af', fontWeight: 400 }}>({pct}%)</span></span>
+        <span style={{ color: 'var(--text-2)', fontWeight: 500 }}>{label}</span>
+        <span style={{ color, fontWeight: 700 }}>{count}/{total} <span style={{ color: 'var(--text-3)', fontWeight: 400 }}>({pct}%)</span></span>
       </div>
-      <div style={{ background: '#f1f3f8', borderRadius: 4, height: 6 }}>
+      <div style={{ background: 'var(--surface2)', borderRadius: 4, height: 6 }}>
         <div style={{
           width: `${pct}%`, background: color, height: 6,
           borderRadius: 4, transition: 'width 0.6s ease',

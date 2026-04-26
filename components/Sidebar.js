@@ -3,14 +3,15 @@ import { RoleBadge } from '@/components/UI'
 
 // Define which roles can access each nav item
 const navItems = [
-  { id: 'dashboard',    icon: '▦',  label: 'Dashboard',        section: 'Main',   roles: ['admin', 'manager', 'employee'] },
-  { id: 'calendar',     icon: '◫',  label: 'Content Calendar', section: null,     roles: ['admin', 'manager', 'employee'] },
-  { id: 'clients',      icon: '◎',  label: 'Clients',          section: 'Manage', roles: ['admin', 'manager'] },
-  { id: 'deliverables', icon: '◈',  label: 'Deliverables',     section: null,     roles: ['admin', 'manager'] },
-  { id: 'jobs',         icon: '⊟',  label: 'Job Tracker',      section: null,     roles: ['admin', 'manager', 'employee'] },
-  { id: 'employees',    icon: '◑',  label: 'Employees',        section: 'Team',   roles: ['admin', 'manager'] },
-  { id: 'performance',  icon: '◉',  label: 'Performance',      section: null,     roles: ['admin', 'manager'] },
-  { id: 'users',        icon: '⊛',  label: 'Users',            section: 'Admin',  roles: ['admin'] },
+  { id: 'dashboard',       icon: '▦',  label: 'Dashboard',        section: 'Main',   roles: ['admin', 'manager', 'employee'] },
+  { id: 'calendar',        icon: '◫',  label: 'Content Calendar', section: null,     roles: ['admin', 'manager', 'employee'] },
+  { id: 'content_repo',   icon: '⊞',  label: 'Content Repo',     section: null,     roles: ['admin', 'manager'] },
+  { id: 'clients',         icon: '◎',  label: 'Clients',          section: 'Manage', roles: ['admin', 'manager'] },
+  { id: 'deliverables',    icon: '◈',  label: 'Deliverables',     section: null,     roles: ['admin', 'manager'] },
+  { id: 'jobs',            icon: '⊟',  label: 'Job Tracker',      section: null,     roles: ['admin', 'manager', 'employee'] },
+  { id: 'employees',       icon: '◑',  label: 'Employees',        section: 'Team',   roles: ['admin', 'manager'] },
+  { id: 'performance',     icon: '◉',  label: 'Performance',      section: null,     roles: ['admin', 'manager'] },
+  { id: 'users',           icon: '⊛',  label: 'Users',            section: 'Admin',  roles: ['admin'] },
 ]
 
 export default function Sidebar({ page, onNavigate, onLogout, userRole, user, isOpen, onClose }) {

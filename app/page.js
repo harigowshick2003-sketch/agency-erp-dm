@@ -14,18 +14,20 @@ import Jobs from '@/components/pages/Jobs'
 import Employees from '@/components/pages/Employees'
 import Performance from '@/components/pages/Performance'
 import Users from '@/components/pages/Users'
+import ContentRepository from '@/components/pages/ContentRepository'
 import { LoginForm, SignupForm } from '@/components/AuthForms'
 
 const PAGE_TITLES = {
-  dashboard:   'Dashboard',
-  calendar:    'Content Calendar',
-  clients:     'Clients',
+  dashboard:    'Dashboard',
+  calendar:     'Content Calendar',
+  content_repo: 'Content Repository',
+  clients:      'Clients',
   client_detail: '',
   deliverables: 'Deliverables Split Tracker',
-  jobs:        'Job Work Tracker',
-  employees:   'Employees',
-  performance: 'Employee Performance',
-  users:       'User Management'
+  jobs:         'Job Work Tracker',
+  employees:    'Employees',
+  performance:  'Employee Performance',
+  users:        'User Management'
 }
 
 export default function App() {
@@ -214,6 +216,7 @@ export default function App() {
           {['admin', 'manager'].includes(appState.userRole) && page === 'clients'       && <Clients state={appState} onRefresh={handleRefresh} onNavigate={navigate} />}
           {['admin', 'manager'].includes(appState.userRole) && page === 'client_detail' && <ClientDetail state={appState} onRefresh={handleRefresh} onNavigate={navigate} />}
           {['admin', 'manager'].includes(appState.userRole) && page === 'deliverables'  && <Deliverables state={appState} onRefresh={handleRefresh} />}
+          {['admin', 'manager'].includes(appState.userRole) && page === 'content_repo'  && <ContentRepository state={appState} onRefresh={handleRefresh} />}
           
           {page === 'jobs'          && <Jobs state={appState} onRefresh={handleRefresh} />}
           
